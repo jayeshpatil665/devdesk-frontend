@@ -1,0 +1,105 @@
+#projecttask-main-div{
+    display: flex;
+}
+
+.projectTaskSelectionCard {
+    background-color: lightblue;
+    margin: 0px;
+    margin-left: 10px;
+    width: 98%;
+    height: auto;
+
+    border: 1px solid black;
+    background-color: #fff0f5;
+
+    position: absolute;
+}
+
+.projectTaskSelectionCard > mat-card-header {
+    padding-top: 10px;
+}
+
+.form-field{
+    width: 40;
+    margin-left: 10px;
+}
+
+.taskCard-main {
+    margin-bottom: 5px;
+}
+
+.taskCard{
+    width: auto;
+    height: auto;
+}
+
+.taskCard-top {
+    align-items: center;
+}
+
+.card-title{
+    text-align: right;
+    float: left;
+    width: 25%;
+}
+
+.mainTitle{
+    text-align: left;
+}
+
+.sub-title{
+    width: 22%;
+    height: 20px;
+}
+
+.taskCard-flex{
+    display: flex;
+}
+
+.card-subtitle-custome-one{
+    width: 100%;
+    text-align: left;
+    display: flex;
+}
+
+.card-subtitle-custome-two{
+    display: flex;
+    padding-left: 15px;
+    float: left;
+}
+
+.card-subtitle-custome-three{
+    width: 60%;
+    text-align: left;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.card-subtitle-custome-date{
+    width: 50%;
+    text-align: right;
+}
+
+.chip-tag{
+    float: left;
+    width: min-content;
+    height: min-content;
+}
+
+.card-subtitle-custome-little-info{
+    width: 50%;
+    text-align: left;
+    display: flex;
+}
+
+mat-card-footer{
+    display: flex;
+}
+
+mat-accordion > mat-expansion-panel {
+    background-color: lightgray;
+}
+
+mat-accordion > mat-expansion-panel > mat-expansion-panel-header {
+    width: auto;
+}

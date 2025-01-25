@@ -1,0 +1,56 @@
+#add-task-main-div{
+    position: absolute;
+    left: 22%;
+    top: 5%;
+    width: fit-content;
+}
+
+#add-task-card{
+    padding: 30px;
+    border: 1px solid mintcream;
+}
+
+#add-task-card > mat-card-title{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.card-content{
+    display: flex;
+    float: left;
+} 
+
+.form-field{
+    height: 20px;
+}
+
+.card-content > mat-card-actions{
+    padding-left: 50%;
+}
+
+
+.form-field-inputs{
+    margin-right: 10px;
+    width: 100%;
+}
+
+.form-field-inputs-dropdown{
+    margin-right: 10px;
+}
+
+.multiline-content{
+    height: min-content;
+}
+
+.chip-list {
+    width: 70%;
+}
+
+.date-range{
+    margin-right: 10px;
+    width: 38%;
+}
+
+.assign-to{
+    width: 100%;
+}

@@ -1,0 +1,221 @@
+<div id="task-main-div">
+
+    <mat-card class="taskSelectionCard">
+        <mat-card-header matBadge="{{taskListAssignedToMeLength}}" matBadgeColor="warn">
+            <img width="25" height="25" src="https://img.icons8.com/ios/50/tasks--v1.png" alt="tasks--v1"/>
+            &nbsp; Overall Available Tasks
+        </mat-card-header>
+        <hr>
+        @for (task of taskListAssignedToMe; track $index) {
+            <mat-card-content class="taskCard-main">
+                <mat-card class="taskCard" [ngStyle]="{'background-color':task.tStatus === 0 ? 'darkgrey' :  task.tStatus === 1 ? 'darksalmon' : 'darkseagreen' }">
+                    <mat-card-content class="taskCard-top">
+                        <mat-card-subtitle class="card-title mainTitle"><b>Task Id : {{task.tId}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><b>Client : {{task.tClient}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><img width="25" height="25" src="https://img.icons8.com/dusk/50/edit--v1.png" alt="edit--v1" (click)="editTask(task.tId)" /></mat-card-subtitle>
+
+                        @if (task.tPriority==1) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else if (task.tPriority==2) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle><b>Task Name : {{task.tName}}</b></mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle class="card-subtitle-custome-one">
+                            <b>Picked by :</b>
+                            <mat-card-subtitle *ngFor="let emp of task.tPickedBy | keyvalue">
+                                , {{emp.key}}
+                            </mat-card-subtitle>
+                        </mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-subtitle class="card-subtitle-custome-one">
+                        <mat-card-subtitle>
+                            <mat-chip-set class="card-subtitle-custome-two">
+                                @for (chip of task.tTag; track $index) {
+                                    <mat-chip class="chip-tag">{{chip}}</mat-chip>
+                                }
+                            </mat-chip-set>
+                        </mat-card-subtitle>
+                    </mat-card-subtitle>
+
+                    <mat-card-footer>
+                        <mat-card-subtitle class="card-subtitle-custome-three">
+                            <mat-accordion>
+                                <mat-expansion-panel #acordian>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>( i ) info / help </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <p><mat-icon matSuffix>-</mat-icon> Task Report date : {{task.tReportDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> ETA/Resolved date : {{task.tResolutionDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Email Subject : {{task.tEmail}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Info : {{task.tInfo}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Solution : {{task.tSolution}}</p>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-card-subtitle>
+                    </mat-card-footer>
+
+                </mat-card>
+            </mat-card-content>
+        }
+    </mat-card>
+
+    <!--In Progress Tasks-->
+    <mat-card class="taskSelectionCard">
+        <mat-card-header matBadge="{{taskListInProgressLength}}">
+            <img width="25" height="25" src="https://img.icons8.com/ultraviolet/25/tasks.png" alt="tasks--v1"/>
+            &nbsp; In Progress Tasks
+        </mat-card-header>
+        <hr>
+        @for (task of taskListInProgress; track $index) {
+            <mat-card-content class="taskCard-main">
+                <mat-card class="taskCard" [ngStyle]="{'background-color':task.tStatus === 0 ? 'darkgrey' :  task.tStatus === 1 ? 'darksalmon' : 'darkseagreen' }">
+                    <mat-card-content class="taskCard-top">
+                        <mat-card-subtitle class="card-title mainTitle"><b>Task Id : {{task.tId}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><b>Client : {{task.tClient}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><img width="25" height="25" src="https://img.icons8.com/dusk/50/edit--v1.png" alt="edit--v1" (click)="editTask(task.tId)" /></mat-card-subtitle>
+
+                        @if (task.tPriority==1) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else if (task.tPriority==2) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle><b>Task Name : {{task.tName}}</b></mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle class="card-subtitle-custome-one">
+                            <b>Picked by :</b>
+                            <mat-card-subtitle *ngFor="let emp of task.tPickedBy | keyvalue">
+                                , {{emp.key}}
+                            </mat-card-subtitle>
+                        </mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-subtitle class="card-subtitle-custome-one">
+                        <mat-card-subtitle>
+                            <mat-chip-set class="card-subtitle-custome-two">
+                                @for (chip of task.tTag; track $index) {
+                                    <mat-chip class="chip-tag">{{chip}}</mat-chip>
+                                }
+                            </mat-chip-set>
+                        </mat-card-subtitle>
+                    </mat-card-subtitle>
+
+                    <mat-card-footer>
+                        <mat-card-subtitle class="card-subtitle-custome-three">
+                            <mat-accordion>
+                                <mat-expansion-panel #acordian>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>( i ) info / help </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <p><mat-icon matSuffix>-</mat-icon> Task Report date : {{task.tReportDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> ETA/Resolved date : {{task.tResolutionDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Email Subject : {{task.tEmail}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Info : {{task.tInfo}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Solution : {{task.tSolution}}</p>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-card-subtitle>
+                    </mat-card-footer>
+
+                </mat-card>
+            </mat-card-content>
+        }
+    </mat-card>
+
+    <!--Completed Tasks-->
+    <mat-card class="taskSelectionCard">
+        <mat-card-header matBadge="{{taskListCompletedLength}}" matBadgeColor="accent">
+            <img width="25" height="25" src="https://img.icons8.com/dusk/50/tasks.png" alt="tasks--v1"/>
+            &nbsp; Completed Tasks
+        </mat-card-header>
+        <hr>
+        @for (task of taskListCompleted; track $index) {
+            <mat-card-content class="taskCard-main">
+                <mat-card class="taskCard" [ngStyle]="{'background-color':task.tStatus === 0 ? 'darkgrey' :  task.tStatus === 1 ? 'darksalmon' : 'darkseagreen' }">
+                    <mat-card-content class="taskCard-top">
+                        <mat-card-subtitle class="card-title mainTitle"><b>Task Id : {{task.tId}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><b>Client : {{task.tClient}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><img width="25" height="25" src="https://img.icons8.com/dusk/50/edit--v1.png" alt="edit--v1" (click)="editTask(task.tId)" /></mat-card-subtitle>
+
+                        @if (task.tPriority==1) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else if (task.tPriority==2) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle><b>Task Name : {{task.tName}}</b></mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle class="card-subtitle-custome-one">
+                            <b>Picked by :</b>
+                            <mat-card-subtitle *ngFor="let emp of task.tPickedBy | keyvalue">
+                                , {{emp.key}}
+                            </mat-card-subtitle>
+                        </mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-subtitle class="card-subtitle-custome-one">
+                        <mat-card-subtitle>
+                            <mat-chip-set class="card-subtitle-custome-two">
+                                @for (chip of task.tTag; track $index) {
+                                    <mat-chip class="chip-tag">{{chip}}</mat-chip>
+                                }
+                            </mat-chip-set>
+                        </mat-card-subtitle>
+                    </mat-card-subtitle>
+
+                    <mat-card-footer>
+                        <mat-card-subtitle class="card-subtitle-custome-three">
+                            <mat-accordion>
+                                <mat-expansion-panel #acordian>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>( i ) info / help </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <p><mat-icon matSuffix>-</mat-icon> Task Report date : {{task.tReportDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> ETA/Resolved date : {{task.tResolutionDate}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Email Subject : {{task.tEmail}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Info : {{task.tInfo}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Solution : {{task.tSolution}}</p>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-card-subtitle>
+                    </mat-card-footer>
+
+                </mat-card>
+            </mat-card-content>
+        }
+    </mat-card>
+
+</div>

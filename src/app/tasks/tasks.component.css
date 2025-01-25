@@ -1,0 +1,113 @@
+#task-main-div {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 12px; 
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 100;
+    align-items: baseline;
+    justify-content: center;
+  }
+  
+  .taskSelectionContainer {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 12px;
+    justify-content: space-between; 
+  }
+  
+  .taskSelectionCard {
+    background: lavenderblush;
+    flex: 1 1 30%; 
+    max-width: 30%; 
+    min-width: 280px; 
+    margin: 6px;
+    transition: transform 0.3s ease;
+  }
+  
+  .taskSelectionCard > mat-card-header {
+    padding-top: 10px;
+  }
+  
+  @media (max-width: 1024px) {
+    .taskSelectionCard {
+      flex: 1 1 45%; 
+      max-width: 45%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .taskSelectionCard {
+      flex: 1 1 100%; 
+      max-width: 100%;
+    }
+  }
+  
+  .taskCard-main {
+    margin-bottom: 5px;
+  }
+  
+  .taskCard {
+  }
+  
+  .taskCard-top {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-title {
+    text-align: right;
+    float: left;
+    width: 25%;
+  }
+  
+  .mainTitle {
+    text-align: left;
+  }
+  
+  .sub-title {
+    width: 22%;
+    height: 20px;
+  }
+  
+  .taskCard-flex {
+    display: flex;
+  }
+  
+  .card-subtitle-custome-one {
+    width: 100%;
+    text-align: left;
+    display: flex;
+  }
+  
+  .card-subtitle-custome-two {
+    display: flex;
+    padding-left: 15px;
+  }
+  
+  .card-subtitle-custome-three {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .chip-tag {
+    float: left;
+    width: min-content;
+    height: min-content;
+  }
+  
+  /* Footer styles */
+  mat-card-footer {
+    display: flex;
+  }
+  
+  /* Accordion styles */
+  mat-accordion > mat-expansion-panel {
+    background-color: lightgray;
+  }
+  
+  mat-accordion > mat-expansion-panel > mat-expansion-panel-header {
+    width: auto;
+  }
+  

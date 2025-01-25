@@ -1,0 +1,23 @@
+<mat-drawer-container>
+    <mat-drawer #drawer mode="side" opened class="side-nav-static">
+        <img width="50" height="50" src="assets/img/logo.png" class="logo" alt="logo"/>
+      <ul class="top-menu-list">
+        <li matTooltip="Dashboard" matTooltipPosition="right"> <a routerLink="/home"><img width="40" height="40" src="https://img.icons8.com/dusk/40/exterior.png" alt="home"/></a></li>
+        <li matTooltip="My Tasks" matTooltipPosition="right"> <a routerLink="/tasks"><img width="40" height="40" src="https://img.icons8.com/office/40/backlog.png" alt="my tasks"/></a></li>
+        <li matTooltip="Project Tasks" matTooltipPosition="right"> <a routerLink="/projecttasks"><img width="40" height="40" src="https://img.icons8.com/dusk/40/clipboard-list.png" alt="project tasks"/></a></li>
+        <li matTooltip="Add / Update Tasks" matTooltipPosition="right"> <a routerLink="/addtask/0"><img width="40" height="40" src="https://img.icons8.com/dusk/40/plus-2-math.png" alt="add task"/></a></li>
+        <li matTooltip="About" matTooltipPosition="right"> <a routerLink="/about"><img width="40" height="40" src="https://img.icons8.com/dusk/40/people-working-together.png" alt="about"/></a></li>
+       
+        <!--
+        <li matTooltip="Info" matTooltipPosition="right"> <a><img width="40" height="40" src="https://img.icons8.com/plasticine/40/information.png" alt="info"/></a></li>
+  -->
+        <li matTooltip="Logout" matTooltipPosition="right"> <a ><img width="40" height="40" src="https://img.icons8.com/dusk/40/close-window--v1.png" alt="logout" (click)="logout()" /></a></li>
+      </ul>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet>
+        <mat-icon (click)="drawer.toggle()" >menu</mat-icon>
+      </router-outlet>
+    </mat-drawer-content>
+  
+  </mat-drawer-container>

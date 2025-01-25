@@ -1,0 +1,79 @@
+<div id="projecttask-main-div">
+    <mat-card class="projectTaskSelectionCard">
+        <mat-card-header matBadge="{{taskListLength}}" matBadgeColor="warn">
+            <img width="40" height="40" src="https://img.icons8.com/ios/50/tasks--v1.png" alt="tasks--v1"/>
+            &nbsp; Overall Available Tasks
+        </mat-card-header>
+        <hr>
+
+        <mat-form-field appearance="outline" class="form-field" style="width: 98%;">
+            <mat-label><b>Enter task name to be searched...</b></mat-label>
+            <input matInput placeholder="task details" name="searchText" type="text" [(ngModel)]="searchText" />
+            <mat-icon matSuffix>quick_reference_all</mat-icon>
+        </mat-form-field>
+
+        <!--*ngFor="let task of taskList | filter : this.searchText"-->
+            <mat-card-content class="taskCard-main" *ngFor="let task of taskList | filter : this.searchText" >
+                <mat-card [ngStyle]="{'background-color':task.tStatus === 0 ? 'darkgrey' :  task.tStatus === 1 ? 'darksalmon' : 'darkseagreen' }" class="taskCard">
+                    <mat-card-content class="taskCard-top">
+                        <mat-card-subtitle class="card-title mainTitle"><b>Task Id : {{task.tId}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><b>Client : {{task.tClient}} </b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-title"><img width="25" height="25" src="https://img.icons8.com/dusk/50/edit--v1.png" alt="edit--v1" (click)="editTask(task.tId)" /> </mat-card-subtitle>
+
+                        @if (task.tPriority==1) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else if (task.tPriority==2) {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                        @else {
+                            <mat-card-subtitle class="card-title sub-title"> <mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon><mat-icon>star-half</mat-icon> </mat-card-subtitle>
+                        }
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle class="card-subtitle-custome-little-info"><b>Task Name : {{task.tName}}</b></mat-card-subtitle>
+                        <mat-card-subtitle class="card-subtitle-custome-date"><b>Task Report Date : </b>{{task.tReportDate}}</mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-content class="taskCard-flex">
+                        <mat-card-subtitle class="card-subtitle-custome-one" style="width: 50%;">
+                            <b>Picked by :</b>
+                                <mat-card-subtitle *ngFor="let emp of task.tPickedBy | keyvalue">
+                                    , {{emp.key}}
+                                </mat-card-subtitle>
+                        </mat-card-subtitle>
+                        <mat-card-subtitle class="card-subtitle-custome-date"><b>ETA/Resolved date : </b>{{task.tResolutionDate}}</mat-card-subtitle>
+                    </mat-card-content>
+
+                    <mat-card-footer>
+                        <mat-card-subtitle class="card-subtitle-custome-one" style="width: 40%;">
+                            <mat-card-subtitle>
+                                <mat-chip-set class="card-subtitle-custome-two">
+                                    @for (chip of task.tTag; track $index) {
+                                        <mat-chip class="chip-tag">{{chip}}</mat-chip>
+                                    }
+                                </mat-chip-set>
+                            </mat-card-subtitle>
+                        </mat-card-subtitle>
+
+                        <mat-card-subtitle class="card-subtitle-custome-three">
+                            <mat-accordion>
+                                <mat-expansion-panel #acordian>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>( i ) info / help </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <p><mat-icon matSuffix>-</mat-icon> Email Subject : {{task.tEmail}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Info : {{task.tInfo}}</p>
+                                    <p><mat-icon matSuffix>-</mat-icon> Solution : {{task.tSolution}}</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-card-subtitle>
+                    </mat-card-footer>
+
+                </mat-card>
+            </mat-card-content>
+        
+    </mat-card>
+</div>
