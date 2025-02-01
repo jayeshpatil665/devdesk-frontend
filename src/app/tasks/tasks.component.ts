@@ -37,8 +37,8 @@ export class TasksComponent implements OnInit{
 
   getFilteredTaskAssignedToMe(taskStatus : number) {
     let payload = new FilteredDataRequest();
-    payload.empId = this.authService.empId;
-    payload.devTag = this.authService.devTag;
+    payload.empId = Number(sessionStorage.getItem('empId'));
+    payload.devTag = sessionStorage.getItem('devTag');
     payload.taskStatus = taskStatus;
     payload.clientName = 'all';
     payload.taskType = 'personal';

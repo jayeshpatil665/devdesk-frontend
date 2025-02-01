@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit{
       (resp:UsersNameDetail)=>{
         //console.log('userNameList respponse : ',resp);
         this.authService.usersList = resp.usersList;
+        sessionStorage.setItem('usersList',JSON.stringify(resp.usersList));
         this.router.navigate(['']);
       },
       (error)=>{
@@ -107,9 +108,9 @@ export class LoginComponent implements OnInit{
         if(resp.status === "SUCCESS"){
           sessionStorage.setItem('userLoggedIn','true');
 
-          this.authService.devTag = resp.devTag;
-          this.authService.empId = resp.empId;
-          this.authService.devName = resp.devName;
+          sessionStorage.setItem('devTag',resp.devTag);
+          sessionStorage.setItem('empId',''+resp.empId);
+          sessionStorage.setItem('devName',resp.devName);
   
           this.getUserNameList(request);
         }

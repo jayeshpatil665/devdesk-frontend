@@ -90,7 +90,7 @@ export class AddTaskComponent implements OnInit{
 
     //setting username List
     //console.log('setting users in constructor');
-    let obj = this.authService.usersList;
+    let obj =  JSON.parse(sessionStorage.getItem('usersList'));// this.authService.usersList;
 
     //console.log('userNames From service : ',this.authService.usersList);
     //console.log('userNames[] : ',obj);
@@ -302,8 +302,8 @@ export class AddTaskComponent implements OnInit{
 
   getSpecificTaskDetails() {
     let payload = new SpecificTaskDetailsRequest();
-    payload.empId = this.authService.empId;
-    payload.devTag = this.authService.devTag;
+    payload.empId = Number(sessionStorage.getItem('empId'));
+    payload.devTag =sessionStorage.getItem('devTag');
     payload.tId = this.passedTaskId;
 
     this.taskService.getSpecificTaskDetails(payload).subscribe(

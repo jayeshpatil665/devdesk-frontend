@@ -16,9 +16,7 @@ export class AuthService {
   baseURL: string = '';
 
   usersList : TaskPickedBy[]=[];
-  empId : number;
-  devTag : string = '';
-  devName : string = '';
+
 
   constructor(private http: HttpClient) { 
     this.baseURL = sessionStorage.getItem('backendURL');

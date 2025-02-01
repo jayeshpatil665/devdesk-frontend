@@ -3,6 +3,7 @@ import {MatCardModule} from '@angular/material/card';
 
 import {MatIconModule} from '@angular/material/icon';
 import { AuthService } from '../services/AuthService/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,12 @@ import { AuthService } from '../services/AuthService/auth.service';
 export class HomeComponent {
 
   userName : string = '';
-  constructor(private authService : AuthService){
-    this.userName = authService.devName;
+  constructor(private authService : AuthService,private router : Router){
+    this.userName = sessionStorage.getItem('devName');
+
+    if(this.userName===''){
+      sessionStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 }

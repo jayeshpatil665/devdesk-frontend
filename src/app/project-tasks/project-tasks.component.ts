@@ -42,7 +42,7 @@ export class ProjectTasksComponent implements OnInit {
   constructor(private router : Router,private taskService : TasksService, private authService : AuthService){
   }
   ngOnInit(): void {
-    this.getOverAllTasksDetails(this.authService.empId,this.authService.devTag);
+    this.getOverAllTasksDetails(Number(sessionStorage.getItem('empId')),sessionStorage.getItem('devTag'));
   }
 
   editTask(taskId : number){
