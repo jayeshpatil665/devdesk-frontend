@@ -316,7 +316,7 @@ export class AddTaskComponent implements OnInit{
           tasktitle : this.speciftTask.tName,
           taskemail : this.speciftTask.tEmail,
           taskdetails : this.speciftTask.tInfo,
-          tasksoln : this.speciftTask.tInfo,
+          tasksoln : this.speciftTask.tSolution,
           taskclient : this.speciftTask.tClient,
           taskpriority : this.speciftTask.tPriority,
           taskpool : this.speciftTask.tPool,
